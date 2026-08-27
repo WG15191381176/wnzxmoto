@@ -23,6 +23,18 @@ jobs:
           toolchain: stable
           target: x86_64-pc-windows-msvc
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install frontend dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build frontend
+        run: pnpm build
+
       - name: Cache cargo
         uses: actions/cache@v4
         with:
