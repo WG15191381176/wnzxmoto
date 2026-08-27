@@ -29,16 +29,8 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmmirror.com'
 
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps --ignore-scripts --no-optional --fetch-timeout=600000 --registry=https://registry.npmmirror.com
+      - name: Install dependencies (fresh, no cache)
+        run: npm install --legacy-peer-deps --ignore-scripts --no-optional --fetch-timeout=600000 --registry=https://registry.npmmirror.com --prefer-online
 
       - name: Build frontend
         run: npm run build
