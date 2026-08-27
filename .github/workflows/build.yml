@@ -11,7 +11,7 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -27,15 +27,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          registry-url: 'https://registry.npmmirror.com'
 
-      - name: Install pnpm
-        run: npm install -g pnpm@latest
-
-      - name: Install frontend dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies (npm with mirror)
+        run: npm install --legacy-peer-deps --registry=https://registry.npmmirror.com --fetch-timeout=300000
 
       - name: Build frontend
-        run: pnpm build
+        run: npm run build
 
       - name: Cache cargo
         uses: actions/cache@v4
