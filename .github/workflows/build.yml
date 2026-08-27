@@ -27,10 +27,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmmirror.com'
+          cache: 'npm'
 
-      - name: Install dependencies (npm with mirror)
-        run: npm install --legacy-peer-deps --registry=https://registry.npmmirror.com --fetch-timeout=300000
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps --fetch-timeout=600000 --prefer-offline
 
       - name: Build frontend
         run: npm run build
