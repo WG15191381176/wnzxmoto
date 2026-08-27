@@ -34,10 +34,9 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Install Tauri CLI
-        run: cargo install tauri-cli --version 2 --locked
+        run: cargo install tauri-cli --version "^2" --locked
 
       - name: Build Tauri App
-        working-directory: ./inventory-manager
         run: cargo tauri build
 
       - name: Upload Installer
