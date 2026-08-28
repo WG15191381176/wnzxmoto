@@ -178,15 +178,6 @@ onMounted(() => {
 
 <template>
   <div class="page-container">
-    <!-- 页面头部操作按钮 -->
-    <template #header-actions>
-      <div class="flex gap-2">
-        <el-button type="primary" icon="Plus" @click="openAddDialog('sale')">销售出库</el-button>
-        <el-button type="primary" icon="Tools" @click="openAddDialog('repair')">维修领料</el-button>
-        <el-button type="primary" icon="Document" @click="openAddDialog('other')">其他出库</el-button>
-      </div>
-    </template>
-
     <!-- 搜索栏 -->
     <el-form :model="searchForm" inline class="mb-4 search-form wps-card wps-card__body" style="padding: 16px;">
       <el-form-item>
@@ -365,7 +356,7 @@ onMounted(() => {
         </el-table-column>
       </el-table>
 
-      <div class="flex justify-end mt-4">
+<div class="flex justify-end mt-4">
         <el-descriptions border :column="2" size="small">
           <el-descriptions-item label="合计金额">
             <span class="text-xl font-bold text-primary-600">¥{{ Number(currentOrder.total_amount).toFixed(2) }}</span>

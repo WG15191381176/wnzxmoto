@@ -330,7 +330,7 @@ onMounted(() => {
         </div>
       </template>
     </el-dialog>
-  </div>
+  </el-card>
 </template>
 
 <style scoped>

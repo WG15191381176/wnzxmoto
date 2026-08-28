@@ -188,13 +188,6 @@ onMounted(() => {
 
 <template>
   <div class="page-container">
-    <!-- 页面头部操作按钮 -->
-    <template #header-actions>
-      <div class="flex gap-2">
-        <!-- 移除导入Excel、下载模板、新建入库单按钮，仅保留导出功能（如需导出可在Ribbon菜单操作） -->
-      </div>
-    </template>
-
     <!-- 搜索栏 -->
     <el-form :model="searchForm" inline class="mb-4 search-form wps-card wps-card__body" style="padding: 16px;">
       <el-form-item>
@@ -237,7 +230,6 @@ onMounted(() => {
           <template #default="scope">
             <el-button size="small" type="primary" link @click="viewDetail(scope.row as InOrder)"><Document />详情</el-button>
             <el-button size="small" link @click="openEditDialog(scope.row as InOrder)"><Edit />编辑</el-button>
-            <el-button size="small" icon="Download" @click="exportGuideSheet(scope.row as InOrder)" :disabled="(scope.row as InOrder).status !== 'completed'">导出指导单</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -332,7 +324,7 @@ onMounted(() => {
       </el-table>
 
       <div class="flex justify-end mt-4">
-        <el-descriptions border :column="2" :size="small">
+        <el-descriptions border :column="2" size="small">
           <el-descriptions-item label="合计金额">
             <span class="text-xl font-bold text-primary-600">¥{{ Number(currentOrder.total_amount).toFixed(2) }}</span>
           </el-descriptions-item>
